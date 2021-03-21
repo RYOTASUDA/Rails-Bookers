@@ -5,7 +5,7 @@ class BooksController < ApplicationController
             flash[:notice] = "Book was successfully created."
             redirect_to book_path(book.id)
         else
-            render :new
+            render :index
         end
     
     end
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
         if book.update(book_params)
             redirect_to book_path(book.id), notice: "Book was successfully updated."
         else
-            render :edit
+            render :index
         end
     end
     
@@ -43,7 +43,5 @@ class BooksController < ApplicationController
         params.require(:book).permit(:title, :body)
     end
     
-    validates :title, presence: true
-    validates :body, presence: true
-    
 end
+
